@@ -2,11 +2,22 @@ package main
 
 import (
   "fmt"
+  "log"
 
   "github.com/tmp-friends/go-tutorial/src/greetings"
 )
 
 func main() {
-  message := greetings.Hello("tmp")
-  fmt.Println(message)
+  log.SetPrefix("greetings: ")
+  log.SetFlags(0)
+
+  names := []string{"Gladys", "Samantha", "Darrin"}
+
+  // Request a greeting message
+  messages, err := greetings.Hellos(names)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  fmt.Println(messages)
 }
